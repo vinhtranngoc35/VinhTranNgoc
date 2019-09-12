@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển Đổi Tiền Tệ</title>
+</head>
+<body>
+    Amount      From Curency        To Curency<br>
+    <input type="text" id="tien" width="150" >
+    <select>
+        <option>VND</option>
+        <option>USD</option>
+    </select>
+    <select id="loai">
+        <option value="VND">VND</option>
+        <option value="USD">Do La</option>
+    </select>
+    <input type="submit" value="Convert" width="75" onclick="Tinh()" />
+<script>
+    function Tinh() {
+        let c = document.getElementById("loai").value;
+        let b = parseInt(document.getElementById("tien").value);
+        let d;
+        if (c=="USD"){
+            d = b*23000;
+            alert(d.toFixed(0)+ " VNĐ");
+        }
+        else{
+             d = b/23000;
+            alert(d.toFixed(0)+ " $");
+        }
+
+
+    }
+</script>
+
+
+
+</body>
+</html>

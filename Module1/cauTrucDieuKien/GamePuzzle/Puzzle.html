@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="a" style="background-color:black ">
+
+    <img  src="nuoc1.png" id="pic1" alt="1" onclick="click1()" width="300" height="100px"><br>
+    <img  src="nuoc2.png" id="pic2" alt="2" onclick="click2()" width="300" height="100px"><br>
+    <img  src="nuoc3.png" id="pic3" alt="3" onclick="click3()" width="300px" height="100px"><br>
+    <img  src="nuoc4.png" id="pic4" alt="4" onclick="click4()" width="300px" height="100px"><br>
+
+
+
+
+
+</body>
+<script>
+    let one = document.getElementById("pic1");
+    let two = document.getElementById("pic2");
+    let three = document.getElementById("pic3");
+    let four = document.getElementById("pic4");
+    function click1() {
+        let Random = Math.floor((Math.random()*3) +1 );
+        switch (Random) {
+            case 1:
+                one.src= 'nuoc1.png';
+                one.alt= 1;
+                break;
+            case 2:
+                one.src='co1.png';
+                one.alt= 2;
+
+                break;
+            case 3:
+                one.src = 'dong1.png';
+                one.alt= 3;
+                break;
+        }
+    }
+    function click2() {
+        let Random = Math.floor((Math.random()*3)+ 1) ;
+        switch (Random) {
+            case 1:
+                two.src="nuoc2.png";
+                two.alt= 1;
+                break;
+            case 2:
+                two.src="co2.png";
+                two.alt= 2;
+                break;
+            case 3:
+                two.src='dong2.png';
+                two.alt= 3;
+                break;
+        }
+        finish()
+    }
+    function click3() {
+        let Random = Math.floor((Math.random()*3)+ 1) ;
+        switch (Random) {
+            case 1:
+                three.src="nuoc3.png";
+                three.alt= 1;
+
+                break;
+            case 2:
+                three.src="co3.png";
+                three.alt= 2;
+
+
+                break;
+            case 3:
+                three.src="dong3.png";
+                three.alt= 3;
+                break;
+        }
+        finish()
+    }
+    function click4() {
+        let Random = Math.floor((Math.random()*3)+ 1) ;
+        switch (Random) {
+            case 1:
+                four.src="nuoc4.png";
+                four.alt="1";
+                break;
+            case 2:
+                four.src="co4.png";
+                four.alt="2";
+                break;
+            case 3:
+                four.src="dong4.png";
+                four.alt="3";
+                break;
+        }
+        finish()
+    }
+function check() {
+    return  one.alt + two.alt + three.alt + four.alt === "1111"  || one.alt + two.alt + three.alt + four.alt === "2222" ||
+            one.alt + two.alt + three.alt + four.alt === "3333"
+}
+function finish() {
+        if(check()){
+            document.getElementById("a").style="background-color:pink"
+        }
+        else{
+            document.getElementById("a").style="background-color:black"
+        }
+
+}
+
+</script>
+</html>

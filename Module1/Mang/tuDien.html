@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let nhap = prompt("nhap vao 1 tu tieng viet");
+        let a = ["khong","mot","hai","ba"];
+        let b = ["zero","one","two","three"];
+        let count=0;
+            for (let i =0 ; i < a.length; i++) {
+                if (nhap === a[i]) {
+                    alert(b[i]);
+
+                }else
+                    count++;
+            }
+
+        if(count===a.length)
+            alert("Khong Tim Thay");
+
+    </script>
+</body>
+</html>

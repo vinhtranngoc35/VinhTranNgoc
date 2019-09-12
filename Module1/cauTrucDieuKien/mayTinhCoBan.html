@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="table.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>May Tinh</title>
+</head>
+<body>
+<div id ="table">
+    <table border="1">
+
+        <tr>
+            <td colspan="5"><input id="result" type="text" width="100" value="0"></td>
+
+        <tr>
+            <td><input class="tinh" width="100%" type="submit" value="1" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="2" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="3" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="+" onclick="result.value+=this.value"></td>
+        </tr>
+        <tr>
+            <td><input class="tinh" type="submit" value="4" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="5" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="6" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="-" onclick="result.value+=this.value"></td>
+
+        </tr>
+        <tr>
+            <td><input class="tinh" type="submit" value="7" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="8" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="9" onclick="result.value+=this.value"></td>
+            <td><input class="tinh" type="submit" value="X" onclick="result.value+=this.value"></td>
+
+        </tr>
+        <tr>
+            <td><input class="tinh" type="submit" value="C" onclick="result.value=result.value.substr(0,result.value.length-1)"></td>
+            <td><input class="tinh" type="submit" value="0" onclick="result.value+=this.value"></td>
+
+            <td><input class="tinh" type="submit" value="=" onclick="result.value= eval (result.value)"></td>
+            <td><input class="tinh" type="submit" value="/" onclick="result.value+=this.value"></td>
+
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+
+</script>
+</html>

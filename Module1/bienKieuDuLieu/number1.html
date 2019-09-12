@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    do{ a = parseFloat(prompt("Nhập điểm Vật Lý","0"))
+
+    }
+    while (isNaN(a) || a<0 || a>10);
+    do{ b = parseFloat(prompt("Nhập điểm Hóa Học","0"))
+
+    }
+    while (isNaN(b) || b<0 || b>10);
+    do{ c = parseFloat(prompt("Nhập điểm Sinh Học","0"))
+
+    }
+    while (isNaN(c) || c<0 || c>10);
+    let tb = (a + b + c)/3;
+    let tong = a + b + c;
+
+    document.write(tb.toFixed(1)+"<br>");
+    document.write(tong);
+
+</script>
+</html>
