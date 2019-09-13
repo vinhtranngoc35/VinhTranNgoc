@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let array=[1,3,4,3,4,10,100];
+        let max= 0;
+        for (i=0; i<array.length; i++){
+
+            if(max<array[i]){
+                max = array[i];
+                index= array.indexOf(array[i]);
+            }
+        }
+        document.write("Maximum: "+max + "<br>At Index: "+index);
+    </script>
+
+</body>
+</html>

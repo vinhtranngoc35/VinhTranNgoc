@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let array=[];
+        for (i=0; i<10; i++){
+            array.push(+prompt('nhap vao 10 so nguyen'));
+        }
+        let numberV = +prompt("Input V");
+
+        for (j=0; j<array.length; j++){
+            if(numberV===array[j]){
+                array.splice(j,1);
+                array.push(0);
+            }
+         }
+        document.write(array);
+    </script>
+</body>
+</html>
