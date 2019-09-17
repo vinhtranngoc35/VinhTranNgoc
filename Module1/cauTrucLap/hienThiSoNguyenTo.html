@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>30 Number Prime</p>
+<p id="a"></p>
+</body>
+<script>
+    let num = 0;
+    let prime = "";
+    let b = 0;
+    for (let i = 2; i < 1000; i++) {
+        b = 0;
+        for (let j = 2; j <= i; j++) {
+            if (i % j === 0) b = b + 1;
+        }
+        if (b === 1) {
+            prime = prime+ i + " ";
+            num = num + 1;
+        }
+        if (num === 30)
+            break;
+    }
+    document.getElementById("a").innerHTML = prime;
+
+</script>
+</html>
