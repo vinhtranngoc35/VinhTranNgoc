@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="num" value="0"/>
+<button type="button" onclick="findPrime()">Find Prime</button>
+</body>
+<script>
+    function  findPrime(){
+        let number =parseInt(document.getElementById("num").value);
+         if(number===2){
+             alert(number+ " is a prime");
+         }
+         else {
+            for(i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    alert(number + " is not a prime");
+                    break;
+                } else {
+                    alert(number + " is a prime");
+                    break;
+                }
+            }
+         }
+    }
+
+</script>
+</html>

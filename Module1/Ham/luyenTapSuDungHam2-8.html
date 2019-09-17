@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="SoLanXuatHien" onclick="findTimes();">
+<script>
+    let arrayInteger= [];
+    let count = 0;
+    do{
+        numberInt= +prompt("Enter a number, enter '0' to exit");
+        arrayInteger.push(numberInt);
+    }while (numberInt!==0){
+        arrayInteger.pop(0);
+        document.write(arrayInteger.reverse());
+    }
+    function findTimes() {
+        let num = +prompt("Enter number want to check");
+        for(i=0; i<arrayInteger.length; i++){
+            if(num===arrayInteger[i]){
+                count++;
+            }
+        }
+        if(count===0){
+            alert("Number of appearances is -1");
+        }else {
+            alert("Number of appearances is: "+count);
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

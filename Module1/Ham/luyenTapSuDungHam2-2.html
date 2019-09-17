@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body><p>Nhap vao ban kin cua duong tron</p>
+<input type="number" value=1 id="radius">
+<input type="button" value="DienTich" id="s" onclick="acreage();">
+<input type="button" value="ChuVi" id="c" onclick="perimeter();">
+<script>
+    function acreage() {
+        let r = document.getElementById('radius').value;
+        const pi =3.14;
+        let result;
+        result = r*r*pi;
+        document.write("Dien tich la "+result);
+    }
+    function perimeter() {
+        let r = document.getElementById('radius').value;
+        const pi =3.14;
+        let result;
+        result = r*2*pi;
+        document.write("Chu vi la "+result);
+    }
+
+</script>
+
+</body>
+</html>

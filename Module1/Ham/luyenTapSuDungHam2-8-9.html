@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="SoLanXuatHien" onclick="findTimes();">
+<script>
+    let arrayInteger =[];
+    let count =0;
+    let arrayCharaters=[];
+    do{
+        numberInt= +prompt("Enter a number, enter '0' to exit");
+        arrayInteger.push(numberInt);
+    }while (numberInt!==0){
+        arrayInteger.pop(0);
+        document.write(arrayInteger.reverse());
+    }
+    function findTimes() {
+        do{
+            string =prompt("Enter a array charaters, enter '0' to exit");
+            arrayCharaters.push(string);
+        }while (string!=="0")
+        {
+            let char = prompt("Enter number want to check");
+
+            for (i = 0; i < arrayCharaters.length; i++) {
+                if (char === arrayCharaters[i]) {
+                    count++;
+                }
+            }
+            if (count === 0) {
+                alert("Number of appearances is -1");
+            } else {
+                alert("Number of appearances is: " + count);
+            }
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

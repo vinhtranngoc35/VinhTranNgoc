@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="number" id="num">
+    <input type="button" value="TinhGiaiThua" onclick="factorial();">
+    <input type="button" value="KiemTraSo0" onclick="checkedNumber0();">
+    <input type="button" value="TimSoLonNhat" onclick="findMin();">
+    <input type="button" value="KiemTraSoNguyenDuong" onclick="findInteger();">
+    <input type="button" value="DoiChoHaiSoNguyen" onclick="swapInteger();">
+    <script>
+        function factorial() {
+            let num1 = document.getElementById('num').value;
+            let result = 1;
+            for (i=1; i<num1; i++){
+                result*=i;
+            }
+            result*=num1;
+            document.write("Giai thua cua "+num1+"la "+result)
+        }
+        function checkedNumber0(){
+            let num1 = document.getElementById('num').value;
+            if (num1===0){
+                document.write("True");
+            }else {
+                document.write("False");
+            }
+        }
+        function findMin() {
+            let number1 = +prompt("Input number1");
+            let number2 = +prompt("Input number2");
+            let number3 = +prompt("Input number3");
+            let numberMin = number1;
+            if(numberMin>number2){
+               numberMin=number2;
+            }else if (numberMin>number3){
+                numberMin=number3;
+            }
+            document.write("Numbermin= "+numberMin);
+
+        }
+        function findInteger() {
+            let number = prompt("Input number want to check")
+            let numFlo = parseFloat(number);
+            let numInt = parseInt(number);
+            if(numFlo===numInt && number>0){
+                alert(number+"is a integer");
+            }else {
+                alert(number+" is not a integer");
+            }
+        }
+
+
+    </script>
+</body>
+</html>
