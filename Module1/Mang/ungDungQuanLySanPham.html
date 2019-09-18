@@ -3,20 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table{
+            width: 500px;
+            height: auto;
+            font-size: 18px;
+        }
+        div{
+            width: 450px;
+            height: 150px;
+            background-color: lightgreen;
+            position: relative;
+        }
+        #addproduct{
+
+            text-align: center;
+            left: 50%;
+            top:50%;
+            margin-left: -125px;
+            margin-top: -25px;
+            position: absolute;
+        }
+        .button {
+            background-color: hotpink;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .input{
+            height: 45px;
+
+        }
+    </style>
 </head>
 <body>
-<table>
+    <h2>Add New Product</h2>
+    <div>
+        <p id="addproduct">
+            <input type="text" class="input" id="newProduct" placeholder="New Product">
+            <button type="button" class="button" id="addNewProduct" onclick="add();">Add</button>
+        </p>
+    </div>
+    <h2>Display All Product</h2>
+    <h3>Product Name</h3>
+    <p id="board"></p>
+
     <script>
-    let sanpham= ["Sony","Samsung","Nokia6","Xiaomi Redmi Note4"];
-    let table="<table>";
-    for(let i = 0; i<sanpham.length; i++){
-        "<tr><td>sanpham[i]</td><td><input type='button' onclick='edit();' value='Edit'></td>" +
-        "<td><input type='button' onclick='delete();' value='Delete'></td></tr>"
+    let product= ["Sony","Samsung","Nokia6","Xiaomi Redmi Note4"];
+
+    function loadTable() {
+        let text="";
+        text += "<table>";
+        for(let i = 0; i<product.length; i++) {
+            text += "<tr>";
+            text += "<td>" + product[i] + "</td>";
+            text += "<td>" + "<button onclick='edit(" + i + ");' class=\"button\" >Edit</button>" + "</td>";
+            text += "<td>" + "<button onclick='del(" + i + ");' class=\"button\">Delete</button>" + "</td>";
+            text += "</tr>";
+        }
+        text += "</table>";
+        document.getElementById("board").innerHTML= text;
     }
+    function edit(i) {
+        product[i]= prompt("Input to Edit");
+        loadTable();
+    }
+    function del(i) {
+        let a =confirm("Do You Want Delete This Product?");
+        if(a===true) {
+            if (i === 0) {
+                product.shift();
+            } else {
+                product.splice(i, i--);
+            }
+        }
+        loadTable();
+    }
+    function add() {
+        let b = confirm("Do You Want Add Product?");
+        if(b===true) {
+            product.unshift(document.getElementById("newProduct").value);
+            loadTable();
+        }
+    }
+
+    loadTable();
     </script>
-
-</table>
-
 
 </body>
 </html>

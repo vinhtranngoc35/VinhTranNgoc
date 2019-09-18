@@ -7,11 +7,11 @@
 <body>
     <script>
         let nhap = prompt("nhap vao 1 tu tieng viet");
-        let a = ["khong","mot","hai","ba"];
+        let a = ["Khong","Mot","Hai","Ba"];
         let b = ["zero","one","two","three"];
         let count=0;
             for (let i =0 ; i < a.length; i++) {
-                if (nhap === a[i]) {
+                if (nhap === a[i].toUpperCase() || nhap === a[i].toLowerCase()) {
                     alert(b[i]);
 
                 }else
