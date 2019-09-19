@@ -2,9 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        canvas{
+            margin-right: 10px;
+        }
+        p{
+            font-size: 15px;
+            color: hotpink;
+        }
+        script{
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <p><input type="button" value="Edit" onclick="rec.edit();"></p>
+    <p id="write"></p>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <script>
+        let c = document.getElementById("myCanvas").getContext("2d");
+        let rec=
+            {
+                width: 50,
+                height: 100,
+                edit: function() {
+                    this.width = parseInt(prompt("Input height,Unit px"));
+                    this.height = parseInt(prompt("Input width,Unit px"));
+                    c.clearRect(10, 10, 500, 500);
+                    c.beginPath();
+                    c.rect(20, 20, this.height, this.width);
+                    c.stroke();
+                    perimeter= (this.height + this.width) * 2;
+                    acreage= this.height* this.width;
+                    document.getElementById("write").innerHTML="Perimeter is "+perimeter+"<br>Acreage is "+acreage;
+            },
+        };
+        c.beginPath();
+        c.rect(20, 20, 200, 50);
+        c.stroke();
+
+
+
+    // function createRectangle() {
+    //     rectangle.length = +prompt("Enter length,unit is px");
+    //     while (isNaN(rectangle.length)) {
+    //         rectangle.length = +prompt("You need enter a number,Enter length unit is px");
+    //     }
+    //         rectangle.width = +prompt("Enter Width");
+    //     while (isNaN(rectangle.width)) {
+    //         rectangle.width = +prompt("You need enter a number,Enter width unit is px");
+    //     }
+    //     let a= +prompt("Enter a number for range top");
+    //     let b = +prompt("Enter an number for range left");
+    //     draw(a,b);
+    //     document.getElementById("write").innerHTML="Perimeter is "+rectangle.perimeter + "px<br>Acreage is "+rectangle.acreage+"px";
+    //
+    //     }
+
+
+    </script>
 </body>
+
 </html>
