@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let c = +prompt("Input temperrature C");
+        let temperrature={
+            value: c,
+            display: function () {
+                let f = this.value*1.8+32;
+                let k = this.value+273;
+                document.write("Teamperrature F is "+f+"<br> Temperrature K is "+k);
+            }
+        };
+        temperrature.display();
+    </script>
+
+</body>
+</html>

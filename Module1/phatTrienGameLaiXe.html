@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            margin-left: 400px;
+        }
+    </style>
+</head>
+<body onload="docReady()">
+    <canvas id="myCanvas" height="500px" width="500px" style="border: 2px solid"></canvas>
+    <script>
+        let rect = {
+            x: 0,
+            y: 450,
+            draw: function(x, y) {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.fillStyle = "blue";
+                ctx.fillRect(x, y, 100, 50);
+            },
+            animation: function (stepX,stepY) {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.clearRect(this.x,this.y,100,50);
+                ctx.fillStyle = "blue";
+                ctx.fillRect(stepX,stepY,100,50);
+            }
+        };
+        rect.draw(rect.x,rect.y);
+        function moveSelection(evt) {
+            //debugger;
+            switch (evt.keyCode) {
+                case 37:
+                    rect.animation(rect.x-50,rect.y); //trai
+                    rect.x =  rect.x-50;
+                    if(rect.y === 400 && rect.x!==300){
+                        alert("you lose");
+                    }
+                    if(rect.y === 300 && rect.x!==100){
+                        alert("you lose");
+                    }
+                    if(rect.y === 200 && rect.x!==300){
+                        alert("you lose");
+                    }
+                    if (rect.y === 100 && rect.x!==0){
+                        alert("you lose");
+                    }
+                    if(rect.y===0 && rect.x===400){
+                        alert("you win");
+                    }
+                    break;
+                case 39:
+                    rect.animation(rect.x+50,rect.y); //phai
+                    rect.x = rect.x +50;
+                    if(rect.y === 400 && rect.x!==300){
+                        alert("you lose");
+                    }
+                    if(rect.y === 300 && rect.x!==100){
+                        alert("you lose");
+                    }
+                    if(rect.y === 200 && rect.x!==300){
+                        alert("you lose");
+                    }
+                    if (rect.y === 100 && rect.x!==0){
+                        alert("you lose");
+                    }
+                    if(rect.y===0 && rect.x===400){
+                        alert("you win");
+                    }
+                    break;
+                case 38:
+                    rect.animation(rect.x,rect.y-50); //len
+                    rect.y =  rect.y-50;
+                    if(rect.y === 400 && rect.x!==300){
+                        alert("you lose");
+                    }
+                    if(rect.y === 300 && rect.x!==100){
+                        alert("you lose");
+                    }
+                    if(rect.y === 200 && rect.x!==300){
+                        alert("you lose");
+                    }
+                    if (rect.y === 100 && rect.x!==0){
+                        alert("you lose");
+                    }
+                    if(rect.y===0 && rect.x===400){
+                        alert("you win");
+                    }
+                    break;
+                case 40:
+                    rect.animation(rect.x,rect.y+50); //xuong
+                    rect.y = rect.y +50;
+                    if(rect.y === 400 && rect.x!==300){
+                        alert("you lose");
+                    }
+                    if(rect.y === 300 && rect.x!==100){
+                        alert("you lose");
+                    }
+                    if(rect.y === 200 && rect.x!==300){
+                        alert("you lose");
+                    }
+                    if (rect.y === 100 && rect.x!==0){
+                        alert("you lose");
+                    }
+                    if(rect.y===0 && rect.x===400){
+                    alert("you win");
+                    }
+                    break;
+            }
+        }
+        let obstacles = {
+            obs1: function () {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.fillStyle= "red";
+                ctx.fillRect(0,400,300,50);
+                ctx.fillRect(400,400,100,50);
+            },
+            obs2: function () {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.fillStyle= "red";
+                ctx.fillRect(0,300,100,50);
+                ctx.fillRect(200,300,300,50);
+         },
+            obs3: function () {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.fillStyle= "red";
+                ctx.fillRect(0,200,300,50);
+                ctx.fillRect(400,200,100,50);
+            },
+
+            obs4: function () {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.fillStyle= "red";
+                ctx.fillRect(100,100,400,50);
+            },
+            obs5: function () {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.fillStyle="yellow";
+                ctx.fillRect(400,0,100,50);
+            }
+        };
+
+        function docReady() {
+            window.addEventListener('keydown', moveSelection);
+            obstacles.obs1();
+            obstacles.obs2();
+            obstacles.obs3();
+            obstacles.obs4();
+            obstacles.obs5();
+        }
+
+    </script>
+</body>
+</html>

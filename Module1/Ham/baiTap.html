@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function inputDataN() {
+            let n = +prompt("Input n");
+        while (n<10 || isNaN(n) ){
+             n = +prompt("Input n");
+        }
+        return n;
+    }
+    function inputDataM() {
+        let m = +prompt("Input m");
+        while (m<10 || isNaN(m)){
+             m = +prompt("Input m");
+        }
+        return m;
+    }
+    function createMatrixArray(array,n,m) {
+
+        for ( let i=0; i<n; i++){
+            array[i]=[];
+            for(let j=0; j<m; j++){
+                array[i][j]=(Math.floor(Math.random()*100)+1);
+            }
+        }
+        return array;
+    }
+    function isPrime(number) {
+        for(i=2; i<number; i++){
+            if(number%i===0) {
+                return false;
+            }else
+                return true;
+            }
+
+    }
+    function countPrime(array,n,m) {
+        let count =0;
+        for(let i=0; i<n; i++){
+            for (let j=0; j<m; j++){
+            if(isPrime(array[i][j])===true)
+                 count++;
+            }
+        }
+        return count;
+    }
+    function main() {
+        let matrixArray = [];
+        let n = inputDataN();
+        let m = inputDataM();
+        document.write(createMatrixArray(matrixArray, n, m) + "<br>");
+        let count = countPrime(matrixArray, n, m);
+        document.write(count);
+    }
+    main();
+</script>
+
+</body>
+</html>

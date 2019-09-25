@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function checkEmail(str) {
+            regexp= /^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$/;
+            if(regexp.test(str)){
+                alert("True");
+            }else {
+                alert("False");
+            }
+        }
+        let strEmail = prompt("Enter a email");
+        checkEmail(strEmail);
+        function checkAccount(str) {
+            regexp= /^[_0-9a-z]{6,}$/;
+            if(regexp.test(str)){
+                alert("a account");
+            }else {
+                alert("not a account")
+            }
+        }
+        let strAccount = prompt ("Enter a account");
+        checkAccount(strAccount);
+    </script>
+</body>
+</html>

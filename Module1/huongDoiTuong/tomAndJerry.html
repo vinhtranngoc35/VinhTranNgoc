@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="display"></p>
+<script>
+    let humman= function (name, weight,speed,status,voice) {
+        this.name =name;
+        this.weight= weight;
+        this.speed =speed;
+        this.status= status;
+        this.voice= voice;
+         this.void =function () {
+            document.getElementById("display").innerHTML= this.name+ " voice is "+this.voice+"<br>";
+        }
+    };
+    let rat = new humman("jerry",2,10,"allive","chít chít");
+    let cat = new humman("tom",8,20,"allive","meo meo");
+    cat.eat = function (humman) {
+        if(humman.speed<cat.speed){
+            cat.weight+=humman.weight;
+            rat.status="die";
+            cat.void();
+            console.log(humman.status+cat.weight);
+        }
+    };
+    cat.eat(rat);
+
+</script>
+
+</body>
+</html>

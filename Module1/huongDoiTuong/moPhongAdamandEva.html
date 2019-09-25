@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width: 350px;
+        }
+        td{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <td>Name</td>
+            <td>Adam</td>
+            <td>Eva</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>30</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td><input type="text" id="weightAdam" readonly="true"></td>
+            <td><input type="text" id="weightEva"></td>
+        </tr>
+        <tr>
+            <td>Method</td>
+            <td><input type="button" value="Say" onclick="adam.voice()">
+                <input type="button" value="Eat" onclick="apple.eat(adam)"></td>
+            <td><input type="button" value="Say" onclick="eva.voice()">
+                <input type="button" value="Eat" onclick="apple.eat(eva)"></td>
+        </tr>
+        <tr>
+            <td colspan="2">Apple remain </td>
+            <td><input type="text" id="display"></td>
+        </tr>
+    </table>
+    <p id="say"></p>
+<script>
+    function persorn(name,age,gender,weight,voice,eat){
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.weight = weight;
+        this.voice= function () {
+            let voice = prompt("Input words to say");
+            document.getElementById("say").innerHTML+=this.name+":"+voice+"</br>";
+        }
+    }
+    let adam = new persorn("Adam",30,"male",65);
+    let eva = new persorn("Eva",25,"female", 50);
+    let apple={
+        weight: 10,
+        eat: function (person) {
+            if(this.weight>0){
+            person.weight= person.weight+1;
+            this.weight= this.weight -1;
+            document.getElementById("display").value= apple.weight+" pieces";
+            document.getElementById("weightEva").value= eva.weight;
+            document.getElementById("weightAdam").value= adam.weight;
+            }else {
+                alert("Out of apples");
+            }
+        }
+    };
+    document.getElementById("display").value= apple.weight+" pieces";
+    document.getElementById("weightEva").value= eva.weight;
+    document.getElementById("weightAdam").value= adam.weight;
+</script>
+
+</body>
+</html>

@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+
+
         table{
             width: 500px;
             height: auto;
-            font-size: 18px;
+            font-size: 21px;
+            background-color: lightgreen;
+            font-style: oblique;
+            color: white;
+            margin-left: 400px;
         }
         div{
             width: 450px;
             height: 150px;
             background-color: lightgreen;
             position: relative;
+            margin-left: 400px;
         }
         #addproduct{
 
@@ -38,7 +45,22 @@
         }
         .input{
             height: 45px;
+            width: 200px;
+            font-size: 20px;
 
+        }
+        h2{
+            font-size: 30px;
+            font-style: oblique;
+            color: gold;
+            margin-left: 400px;
+
+        }
+        h3{
+            font-style: oblique;
+            font-size: 23px;
+            margin-left: 400px;
+            color: crimson;
         }
     </style>
 </head>
@@ -47,7 +69,7 @@
     <div>
         <p id="addproduct">
             <input type="text" class="input" id="newProduct" placeholder="New Product">
-            <button type="button" class="button" id="addNewProduct" onclick="add();">Add</button>
+            <button type="button" class="button" id="addNewProduct" onclick="add(); newProduct.value=null;">Add</button>
         </p>
     </div>
     <h2>Display All Product</h2>

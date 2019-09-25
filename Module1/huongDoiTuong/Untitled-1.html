@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            width: 1000px;
+            height: 500px;
+            
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;"> 
+    <script>
+    // function inputa(){
+    //     do{
+    //         n= prompt("a");
+    //         y= parseInt(n);
+    //     }
+    //     while(isNaN(n)) || !Number.isInteger(y)){
+    //         n= prompt("input lai a");
+    //     }
+    //     return y;
+    // }
+    // let n=inputa();    
+        function circle(x, y, radius){
+            this.x = x+2;
+            this.y = y+2;
+            this.radius = radius;
+        }
+        function createCircle(){
+            var ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.clearRect(0,0,500,500);
+            var radius = 50;
+            var a = 250;
+            var b = 250;
+            var color ='rgb('+
+                Math.floor(Math.random()*255)+','+
+                Math.floor(Math.random()*255)+','+
+                Math.floor(Math.random()*255)+')';
+            ctx.beginPath();
+            ctx.arc(a, b, radius, 0, 2 * Math.PI);
+            ctx.fillStyle= color;
+            ctx.fill();
+        }
+        
+    setInterval(createCircle,400);
+    </script>       
+</body>
+</html>
