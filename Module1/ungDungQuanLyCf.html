@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <style>
+        body{
+            background: blueviolet;
+        }
+        .btnAdd {
+            width: 300px;
+            height: 200px;
+            background-color: hotpink;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+        #menu{
+            width: 500px;
+            height: 1000px;
+            display: none;
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+        select{
+            width: 150px;
+            height: 150px;
+        }
+        #menu button{
+            width: 120px;
+            height: 30px;
+            background-color: rgb(219, 52, 136); /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+            margin-left: 30px;
+            z-index: 10;
+            font-size: 20px;
+            font-style: italic;
+        }
+        #menu{
+            font-size: 30px;
+            font-style: italic;
+            color:whitesmoke;
+        }
+        .del button{
+            position: relative;
+            z-index: 100;
+            width: 40px;
+            height: 20px;
+            background-color: hotpink; 
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            font-style: italic;
+        }
+        h1{
+            font-style: italic;
+            color:rgb(131, 11, 27);
+        }
+        .del{
+            font-size: 15px;
+            font-style: oblique;
+            text-align: left;
+        }
+
+        .rows {
+            width: 300px;
+        }
+        .rowname {
+            width: 150px;
+            float: left;
+        }
+        .rowprice {
+            width: 75px;
+            float: left;
+        }
+        .rowbtn {
+            width: 50px;
+            float: left;
+        }
+        #addTable{
+            border: 2px solid lightgrey;
+            background-color: #fff;
+            font-size: 30px;
+            height: 2.5em;
+            width: 2.5em;
+            border-radius: 999px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="income"></h1>
+    <div id = "board">
+    </div>
+    <div id = "menu">
+    </div>
+    <script>
+
+        class Table{
+            constructor(quainty,seated,number){
+                this.quainty = quainty;
+                this.seat = seated;
+                this.numberTbale = number;
+            }
+        }
+        class Drinks{
+            constructor(name,price){
+                this.name = name;
+                this.price = price;
+            }
+        }
+        class Client{
+            constructor(tableNumber,timeStart,drinks){
+                this.seat = function () {
+                    return tableNumber.seat++;
+                };
+                this.timeStart = timeStart;
+                this.drinks = drinks;
+                this.pay  = function(timeEnd) {
+                    manager.income += drinks.price;
+                    return  this.timeEnd= timeEnd;
+                };
+
+            }
+        }
+        class Manager{
+            constructor(){
+                this.income = 0;
+                this.checkTbale = function (table) {
+                    let emty = table.quainty - table.seat;
+                    if(emty>0){
+                        return "Have slot";
+                    }else {
+                        return "Full";
+                    }
+                };
+                this.checkTime = function (client) {
+                    return client.timeStart;
+                };
+            }
+        }
+          
+
+        let product= ["Nước Chanh","Cafe Đen","Cafe Sữa","Cafe SG"];
+        let price = [10,11,12,13];
+        let fee =   [0,0,0,0,0,0,0,0,0,0,0,0,0];
+        let id_glo;
+        let id_glo_;
+        let idDrinks;
+        let income = 0;
+        let newPrice=[];
+        let newArray = [];
+        let count = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        let numberTable = 2;
+
+        function createButton(n){
+            let text ="";
+            text+="<table>";
+            for(let i = 0; i<n; i++){
+                if(i%3===0){
+                    text+= '<tr><td><button id="table'+i+'" class="btnAdd" onclick="check(this.id)">Table'+i+' <p id="fee'+i+'"> </p><p id ="time'+i+'"></p></button></td>';
+                }else if(i%3===1){
+                    text+= '<td><button id="table'+i+'" class="btnAdd" onclick="check(this.id)">Table '+i+'<p id="fee'+i+'"> </p><p id ="time'+i+'"></p></button></td>';
+                }else if(i%3===2){
+                    text+= '<td><button id="table'+i+'" class="btnAdd" onclick="check(this.id)">Table'+i+'<p id="fee'+i+'"> </p><p id ="time'+i+'"></p></button></td></tr>';
+                }
+            }
+    
+            text+= "<button id= 'addTable' onclick = 'addTable();'>+</button></table>"
+            document.getElementById("board").innerHTML = text;
+        }     
+        function createFee(arr){
+            for(let i = 0; i<20; i++){
+                arr[i]=[];
+                for(let j = 0; j<20; j++){
+                    arr[i][j]=0;
+                }
+            }
+        }
+        createFee(newPrice);
+        createFee(newArray);
+        function addDrink(){
+            product.push(prompt("Nhập tên thức uống muốn thêm vào menu"));
+            let n = prompt("Enter a number");
+            let rexgp = /\D/;
+            while(rexgp.test(n) || n<1){
+                n = prompt("Enter a number again");
+            }
+            price.push(n);
+            loadTable();
+        }
+
+        function loadTable() {
+            let text="";
+            text += "<table>";
+            for(let i = 0; i<product.length; i++) {
+                text += "<tr>";
+                text += "<td>" + product[i] + "</td>";
+                text += "<td>" + price[i] +"</td>"
+                text += "<td>" + "<button onclick='add(" + i + ");' class=\"button\" >Add</button>" + "</td>";
+                text += "</tr>";
+            }
+            text += "<td>" + "<button onclick='back();' class=\"button\">Back</button></td><td><button onclick='pay();'>Pay</button></td>";
+            text += "<td><button id = 'addDrink'onclick = 'addDrink()'>AddDrinks</button></td></table>"
+            document.getElementById("menu").innerHTML= text;
+        
+        }
+       
+       
+        function check(id){
+            if(b == true) {
+            id_glo = id;
+            id_glo_ = id_glo[id_glo.length-1];
+            document.getElementById('board').style.display= "none";
+            document.getElementById("menu").style.display= "block";
+            }
+        }
+
+        var b = true;
+        
+        function mOver() {
+            b = false;
+        }
+
+        function mOut() {
+            b = true;
+        }
+
+        function add(i) {
+            
+                id_glo_ = id_glo[id_glo.length-1];
+                let btn = "<button onmouseover='mOver()' onmouseout='mOut()' onclick = 'del("+'"drinks'+count[id_glo_]+'",'+id_glo_+")'>X</button>"
+                fee[id_glo_]=0;
+                newPrice[id_glo_][count[id_glo_]]=price[i];
+                newArray[id_glo_][count[id_glo_]]=product[i];  
+                document.getElementById(id_glo).innerHTML += "<div id='drinks"+count[id_glo_]+"' class = \"del rows\"><div class='rowname'> "
+                                                            +product[i]+"</div><div class='rowprice'> " + price[i] 
+                                                            +"</div><div class='rowbtn'>"+btn+"</div></div>" ;
+                for(let i = 0; i<newPrice.length; i++){
+                    fee[id_glo_]+=newPrice[id_glo_][i];
+                }
+                document.getElementById("fee"+id_glo_).innerHTML = 'Tong: ' +fee[id_glo_] +"<br>" ;
+                count[id_glo_]++;
+                alert("Đã thêm "+product[i]+" vào Table "+ id_glo_);
+                
+                               
+        }
+        function del(i,id_glo_) {
+            
+            fee[id_glo_]=0;
+            let idNew = i[i.length-1];
+            newPrice[id_glo_][idNew]=0;
+            document.getElementById(i).style.display = "none";
+            for(let i = 0; i<newPrice.length; i++){
+                fee[id_glo_]+=newPrice[id_glo_][i];
+            }
+                
+                document.getElementById("fee"+id_glo_).innerHTML = 'Tong: ' + fee[id_glo_]+"<br>" ;
+        }
+
+        function back(){
+            document.getElementById('board').style.display= "block";
+            document.getElementById("menu").style.display= "none";
+        }
+        function pay(){
+            income+=fee[id_glo_];
+            document.getElementById("income").innerHTML = "DoanhThu: "+income;
+            document.getElementById(id_glo).innerHTML = "Table "+id_glo_+"<br>"+"<p id=fee"+id_glo_+"> </p>";
+            fee[id_glo_]=0;
+            count[id_glo_]=0;
+        }
+        loadTable();
+        
+        document.getElementById("income").innerHTML = "DoanhThu: "+income;
+        function getDate(id) {
+            var d = new Date();
+            var n = d.getHours()+":"+d.getMinutes();
+            document.getElementById("time"+id).innerHTML ="Time: "+ n;
+        }
+
+        function addTable(){
+            if(numberTable<10){
+            numberTable++;
+            createButton(numberTable);
+            }else{
+                alert("Khong the tao")
+            }
+        }
+        createButton(numberTable); 
+        
+    </script>
+
+</body>
+
+</html>
